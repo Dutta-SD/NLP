@@ -6,10 +6,7 @@ from zipfile import ZipFile
 from requests import get, head
 from os import path, mkdir
 from tqdm import tqdm
-
-_ZIP_FILE_NAME = "Review_Texts.zip"
-_ZIP_URL = "http://times.cs.uiuc.edu/~wang296/Data/LARA/TripAdvisor/Review_Texts.zip"
-_STORAGE_DIR = "./LARA_Data"
+from _local_config import _STORAGE_DIR, _ZIP_URL, _ZIP_FILE_NAME
 
 class LaraDataFetcher:
     """
