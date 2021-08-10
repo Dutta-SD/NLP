@@ -6,7 +6,7 @@ from zipfile import ZipFile
 from requests import get, head
 from os import path, mkdir
 from tqdm import tqdm
-from _local_config import _STORAGE_DIR, _ZIP_URL, _ZIP_FILE_NAME
+from ._local_config import _STORAGE_DIR, _ZIP_URL, _ZIP_FILE_NAME
 
 class LaraDataFetcher:
     """

@@ -3,7 +3,7 @@ Converts the data into a csv file.
 @author - Sandip Dutta
 """
 import pandas as pd
-from _local_config import _STORAGE_DIR
+from ._local_config import _STORAGE_DIR
 import os
 
 class LARAToDataFile:
@@ -20,7 +20,7 @@ class LARAToDataFile:
         self.data_frame = pd.DataFrame()
 
     def _check_dir_exists(self):
-        if not os.path(_STORAGE_DIR):
+        if not os.path.exists(_STORAGE_DIR):
             raise FileNotFoundError(
                 f"No Directory found at {_STORAGE_DIR}"
             )
@@ -32,7 +32,7 @@ class LARAToDataFile:
     def __call__(self, fmt = 'csv'):
         self._check_dir_exists()
         if fmt == 'csv':
-            for curr_file in os.walk(_STORAGE_DIR):
+            for curr_file in os.listdir(_STORAGE_DIR):
                 self.dat_to_csv(curr_file)
         else:
             raise NotImplementedError(
@@ -54,10 +54,10 @@ class LARAToDataFile:
 
         while i < len(actual_data):
             df_temp = pd.DataFrame(actual_data.iloc[i : i + self._n_data_rows, 1].values.reshape(-1, 1))
-            data_1_remade = pd.concat([data_1_remade, df_temp], ignore_index=True, axis = 1)
+            data_remade = pd.concat([data_remade, df_temp], ignore_index=True, axis = 1)
             i += self._n_data_rows
 
-        data_remade = data_1_remade.T
+        data_remade = data_remade.T
 
         self.data_frame = pd.concat([self.data_frame, data_remade], ignore_index=True, axis = 1)
         self.data_frame.columns = col_names
