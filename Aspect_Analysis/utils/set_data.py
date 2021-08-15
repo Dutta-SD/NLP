@@ -89,12 +89,9 @@ class LARAToDataFile:
 
         if self.data_frame is None:
             self.check_cols()
-            self.data_frame = pd.DataFrame(columns=self._col_names)
-            print(self._col_names)
-            print(self.data_frame.columns)
+            self.data_frame = pd.DataFrame(columns=self._col_names)       
 
         self.data_frame = pd.concat([self.data_frame, data_remade], axis=0)
-        print(f"SHAPE AFTER APPEND : {self.data_frame.shape}")
 
     def save_as_csv(self):
         self.data_frame.to_csv(f"./{self._fileName}.csv", index=False)
