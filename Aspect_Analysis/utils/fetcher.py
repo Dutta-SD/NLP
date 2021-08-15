@@ -6,7 +6,8 @@ from zipfile import ZipFile
 from requests import get, head
 from os import path, mkdir
 from tqdm import tqdm
-from _local_config import _STORAGE_DIR, _ZIP_URL, _ZIP_FILE_NAME
+from ._local_config import _STORAGE_DIR, _ZIP_URL, _ZIP_FILE_NAME
+
 
 class LaraDataFetcher:
     """
@@ -39,7 +40,7 @@ class LaraDataFetcher:
           LaraDataFetcher object
 
         Raises:
-          FileNotFoundError : If not downloaded data or file is 
+          FileNotFoundError : If not downloaded data or file is
             missing
         """
         self._lara_data_url = lara_data_url
